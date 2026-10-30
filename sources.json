@@ -1,0 +1,523 @@
+[
+  {
+    "id": "google-hacktivism-fr",
+    "name": "Google News — France/hacktivisme",
+    "type": "google_news",
+    "query": "(hacktivisme OR DDoS OR cyberattaque) France",
+    "enabled": false,
+    "max_items": 40,
+    "scope": "FR"
+  },
+  {
+    "id": "google-cyber-fr",
+    "name": "Google News — cyberincidents France",
+    "type": "google_news",
+    "query": "(piratage OR cyberattaque OR defacement) (ministère OR mairie OR entreprise) France",
+    "enabled": false,
+    "max_items": 40,
+    "scope": "FR"
+  },
+  {
+    "id": "google-watchlist",
+    "name": "Google News — tracked organizations",
+    "type": "google_org_search",
+    "query_suffix": "(cyberattack OR ransomware OR \"data breach\" OR \"cyber threat\" OR cyberattaque OR кибератака)",
+    "enabled": false,
+    "max_items": 15,
+    "scope": "GLOBAL",
+    "locale": "en",
+    "note": "Optional: one request per active organization. Use org_ids to explicitly select a smaller subset; disabled by default to avoid large query fanout."
+  },
+  {
+    "id": "cert-fr",
+    "name": "CERT-FR — all notices",
+    "type": "rss",
+    "url": "https://www.cert.ssi.gouv.fr/feed/",
+    "enabled": false,
+    "max_items": 40,
+    "scope": "FR"
+  },
+  {
+    "id": "cert-fr-alertes",
+    "name": "CERT-FR — alerts",
+    "type": "rss",
+    "url": "https://www.cert.ssi.gouv.fr/alerte/feed/",
+    "enabled": false,
+    "max_items": 30,
+    "scope": "FR"
+  },
+  {
+    "id": "cert-fr-menaces",
+    "name": "CERT-FR — threats",
+    "type": "rss",
+    "url": "https://cert.cyber.gouv.fr/cti/feed/",
+    "enabled": false,
+    "max_items": 30,
+    "scope": "FR"
+  },
+  {
+    "id": "circl-kev",
+    "name": "CIRCL — aggregated KEV bulletins",
+    "type": "rss",
+    "url": "https://vulnerability.circl.lu/kev-catalogs/feed.atom",
+    "enabled": true,
+    "max_items": 30,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "ransomfeed-fr",
+    "name": "Ransomfeed — France victim claims",
+    "type": "ransomfeed_api",
+    "url": "https://api.ransomfeed.it/country/France",
+    "enabled": false,
+    "max_items": 200,
+    "scope": "FR"
+  },
+  {
+    "id": "bleepingcomputer",
+    "name": "BleepingComputer — security news",
+    "type": "rss",
+    "url": "https://www.bleepingcomputer.com/feed/",
+    "enabled": false,
+    "max_items": 50,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "recordedfuture-record",
+    "name": "The Record — cyber news",
+    "type": "rss",
+    "url": "https://therecord.media/feed",
+    "enabled": false,
+    "max_items": 50,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "ransomlook",
+    "name": "RansomLook — recent claims",
+    "type": "ransomlook_api",
+    "url": "https://www.ransomlook.io/api/posts?days=7",
+    "enabled": true,
+    "max_items": 100,
+    "timeout": 40,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "ransomware-live",
+    "name": "Ransomware.live — recent claims",
+    "type": "ransomware_live_api",
+    "url": "https://api.ransomware.live/v2/recentvictims",
+    "enabled": false,
+    "max_items": 100,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "google-political-incident-fr",
+    "name": "Google News — France political cyber incidents",
+    "type": "google_news",
+    "query": "(France OR français) (hacktiviste OR hacktivisme OR #OpFrance OR défiguration site OR attaque DDoS)",
+    "enabled": false,
+    "max_items": 65,
+    "scope": "FR"
+  },
+  {
+    "id": "google-french-security-actors",
+    "name": "Google News — French threat actor announcements",
+    "type": "google_news",
+    "query": "(NoName057 OR Dark Storm OR CyberTroll OR hacktivistes) (France OR français OR Paris)",
+    "enabled": false,
+    "max_items": 50,
+    "scope": "FR"
+  },
+  {
+    "id": "google-org-context",
+    "name": "Google News — organization context",
+    "type": "google_org_context",
+    "query_suffix": "(manifestation OR protestation OR panne OR perturbation OR grève OR cyberattaque)",
+    "enabled": false,
+    "max_items": 14,
+    "scope": "FR",
+    "locale": "fr"
+  },
+  {
+    "id": "cert-fr-bulletin",
+    "name": "CERT-FR — threat reports (official CTI RSS)",
+    "type": "rss",
+    "url": "https://cert.cyber.gouv.fr/cti/feed/",
+    "enabled": false,
+    "max_items": 45,
+    "scope": "FR",
+    "note": "Same endpoint as cert-fr-menaces; collection deduplicates identical feed URLs."
+  },
+  {
+    "id": "mastodon-cyber-fr",
+    "name": "Mastodon — public #cybersecurite",
+    "type": "mastodon_tag",
+    "instance": "https://mastodon.social",
+    "hashtag": "cybersecurite",
+    "enabled": false,
+    "max_items": 40,
+    "timeout": 18,
+    "scope": "FR"
+  },
+  {
+    "id": "mastodon-hacktivism",
+    "name": "Mastodon — public #hacktivism",
+    "type": "mastodon_tag",
+    "instance": "https://mastodon.social",
+    "hashtag": "hacktivism",
+    "enabled": false,
+    "max_items": 40,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "reddit-cybersecurity",
+    "name": "Reddit — r/cybersecurity public RSS",
+    "type": "rss",
+    "url": "https://www.reddit.com/r/cybersecurity/new/.rss",
+    "enabled": false,
+    "max_items": 30,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "telegram-template",
+    "name": "Telegram — public selected channel (configure)",
+    "type": "telegram_public",
+    "channel": "YourPublicChannel",
+    "enabled": false,
+    "max_items": 50,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "cert-fr-news-bulletins",
+    "name": "CERT-FR — current affairs bulletins",
+    "type": "rss",
+    "url": "https://cert.cyber.gouv.fr/actualite/feed/",
+    "enabled": false,
+    "max_items": 35,
+    "scope": "FR"
+  },
+  {
+    "id": "zataz-direct",
+    "name": "ZATAZ — French cyber news (direct)",
+    "type": "rss",
+    "url": "https://www.zataz.com/feed/",
+    "enabled": false,
+    "max_items": 60,
+    "scope": "FR"
+  },
+  {
+    "id": "01net-security-direct",
+    "name": "01net — security news (direct)",
+    "type": "rss",
+    "url": "https://www.01net.com/actualites/securite/feed/",
+    "enabled": false,
+    "max_items": 45,
+    "scope": "FR"
+  },
+  {
+    "id": "google-fr-org-cyber-confirmation",
+    "name": "Google News — FR targeted historic cases",
+    "type": "google_news",
+    "query": "(\"cyberattaque\" OR \"piraté\" OR \"DDoS\") (\"collectivité\" OR \"parti politique\" OR \"services publics\") France",
+    "enabled": false,
+    "max_items": 40,
+    "scope": "FR"
+  },
+  {
+    "id": "kaspersky-securelist-en",
+    "name": "Kaspersky Securelist — threat research (EN)",
+    "type": "rss",
+    "url": "https://securelist.com/feed/",
+    "enabled": true,
+    "max_items": 35,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "kaspersky-securelist-ru",
+    "name": "Kaspersky Securelist — threat research (RU)",
+    "type": "rss",
+    "url": "https://securelist.ru/feed/",
+    "enabled": false,
+    "max_items": 35,
+    "note": "Temporarily off after TLS unexpected EOF; English Securelist remains on; can re-enable manually",
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "kaspersky-blog-ru",
+    "name": "Kaspersky Blog — security news (RU)",
+    "type": "rss",
+    "url": "https://www.kaspersky.ru/blog/feed/",
+    "enabled": false,
+    "max_items": 25,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "gdelt-global-cyber",
+    "name": "GDELT — worldwide cyber incidents",
+    "type": "gdelt_doc",
+    "query": "(ransomware OR cyberattack OR \"data breach\")",
+    "timespan": "7d",
+    "max_items": 75,
+    "enabled": false,
+    "timeout": 30,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "gdelt-europe-cyber",
+    "name": "GDELT — European cyber incidents",
+    "type": "gdelt_doc",
+    "query": "(cyberattaque OR ransomware OR \"cyber attack\") (France OR Germany OR Italy OR Spain)",
+    "timespan": "7d",
+    "max_items": 75,
+    "enabled": false,
+    "timeout": 30,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "google-europe-incidents",
+    "name": "Google News — Europe cyber incidents",
+    "type": "google_news",
+    "query": "(ransomware OR \"cyber attack\" OR cyberattaque) (France OR Italy OR Spain OR Germany)",
+    "max_items": 65,
+    "enabled": false,
+    "scope": "EU",
+    "locale": "en"
+  },
+  {
+    "id": "google-global-incidents",
+    "name": "Google News — recent international cybersecurity incidents",
+    "type": "google_news",
+    "query": "(ransomware OR \"data breach\" OR \"DDoS attack\") (company OR agency OR hospital)",
+    "max_items": 65,
+    "enabled": true,
+    "scope": "GLOBAL",
+    "locale": "en"
+  },
+  {
+    "id": "therecord",
+    "name": "The Record — cybersecurity news",
+    "type": "rss",
+    "url": "https://therecord.media/feed",
+    "max_items": 45,
+    "enabled": false,
+    "scope": "GLOBAL",
+    "note": "Same endpoint as recordedfuture-record; collection deduplicates identical feed URLs."
+  },
+  {
+    "id": "ransomfeed-world",
+    "name": "Ransomfeed — worldwide recent victim claims",
+    "type": "ransomfeed_api",
+    "url": "https://api.ransomfeed.it/offset/300",
+    "enabled": true,
+    "max_items": 300,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "ransomwhere-world",
+    "name": "Ransomwhere — worldwide claims with country/sector",
+    "type": "ransomwhere_api",
+    "url": "https://ransomwhere.org/api/victims",
+    "enabled": false,
+    "max_items": 100,
+    "scope": "GLOBAL"
+  },
+  {
+    "id": "the-hacker-news-global",
+    "name": "The Hacker News — worldwide",
+    "type": "rss",
+    "url": "https://thehackernews.com/feeds/posts/default",
+    "enabled": true,
+    "scope": "GLOBAL",
+    "max_items": 50
+  },
+  {
+    "id": "krebs-on-security",
+    "name": "Krebs on Security — investigations",
+    "type": "rss",
+    "url": "https://krebsonsecurity.com/feed/",
+    "enabled": true,
+    "scope": "GLOBAL",
+    "max_items": 35
+  },
+  {
+    "id": "dark-reading-global",
+    "name": "Dark Reading — cyber news",
+    "type": "rss",
+    "url": "https://www.darkreading.com/rss.xml",
+    "enabled": false,
+    "scope": "GLOBAL",
+    "max_items": 40
+  },
+  {
+    "id": "cisa-advisories",
+    "name": "CISA — official global threat context",
+    "type": "rss",
+    "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+    "enabled": true,
+    "scope": "GLOBAL",
+    "max_items": 40
+  },
+  {
+    "id": "talos-research",
+    "name": "Cisco Talos — security research",
+    "type": "rss",
+    "url": "https://blog.talosintelligence.com/rss/",
+    "enabled": false,
+    "scope": "GLOBAL",
+    "max_items": 35
+  },
+  {
+    "id": "country-news-us",
+    "name": "Google News — США (поиск инцидентов)",
+    "type": "google_news",
+    "query": "(cyberattack OR ransomware OR \"data breach\") (USA OR \"United States\")",
+    "locale": "en",
+    "scope": "US",
+    "enabled": false,
+    "max_items": 40,
+    "note": "Optional country-focused news search. Mentions do not establish a victim's country."
+  },
+  {
+    "id": "country-news-gb",
+    "name": "Google News — Великобритания (поиск инцидентов)",
+    "type": "google_news",
+    "query": "(cyberattack OR ransomware OR \"data breach\") (UK OR Britain)",
+    "locale": "en",
+    "scope": "GB",
+    "enabled": false,
+    "max_items": 40,
+    "note": "Optional country-focused news search. Mentions do not establish a victim's country."
+  },
+  {
+    "id": "country-news-de",
+    "name": "Google News — Германия (поиск инцидентов)",
+    "type": "google_news",
+    "query": "(Cyberangriff OR Ransomware OR Datenleck) Deutschland",
+    "locale": "de",
+    "scope": "DE",
+    "enabled": false,
+    "max_items": 40,
+    "note": "Optional country-focused news search. Mentions do not establish a victim's country."
+  },
+  {
+    "id": "country-news-it",
+    "name": "Google News — Италия (поиск инцидентов)",
+    "type": "google_news",
+    "query": "(attacco informatico OR ransomware OR violazione dati) Italia",
+    "locale": "it",
+    "scope": "IT",
+    "enabled": false,
+    "max_items": 40,
+    "note": "Optional country-focused news search. Mentions do not establish a victim's country."
+  },
+  {
+    "id": "country-news-es",
+    "name": "Google News — Испания (поиск инцидентов)",
+    "type": "google_news",
+    "query": "(ciberataque OR ransomware OR filtración datos) España",
+    "locale": "es",
+    "scope": "ES",
+    "enabled": false,
+    "max_items": 40,
+    "note": "Optional country-focused news search. Mentions do not establish a victim's country."
+  },
+  {
+    "id": "country-news-pl",
+    "name": "Google News — Польша (поиск инцидентов)",
+    "type": "google_news",
+    "query": "(cyberatak OR ransomware OR wyciek danych) Polska",
+    "locale": "pl",
+    "scope": "PL",
+    "enabled": false,
+    "max_items": 40,
+    "note": "Optional country-focused news search. Mentions do not establish a victim's country."
+  },
+  {
+    "id": "country-news-nl",
+    "name": "Google News — Нидерланды (поиск инцидентов)",
+    "type": "google_news",
+    "query": "(cyberaanval OR ransomware OR datalek) Nederland",
+    "locale": "nl",
+    "scope": "NL",
+    "enabled": false,
+    "max_items": 40,
+    "note": "Optional country-focused news search. Mentions do not establish a victim's country."
+  },
+  {
+    "id": "google-incidents-ru",
+    "name": "Google News — инциденты (русский)",
+    "type": "google_news",
+    "locale": "ru",
+    "query": "(кибератака OR взлом OR \"утечка данных\" OR \"атака вымогателей\") (компания OR организация OR больница)",
+    "scope": "GLOBAL",
+    "enabled": false,
+    "max_items": 35,
+    "note": "Optional language-focused discovery. Source language/search region does not establish organization country or worldwide coverage. Automatic triage may miss local-language phrasing."
+  },
+  {
+    "id": "google-incidents-latam",
+    "name": "Google News — Latinoamérica (español)",
+    "type": "google_news",
+    "locale": "es",
+    "query": "(ciberataque OR ransomware OR \"filtración de datos\") (empresa OR banco OR hospital) (México OR Brasil OR Argentina OR Chile OR Colombia)",
+    "scope": "GLOBAL",
+    "enabled": false,
+    "max_items": 35,
+    "note": "Optional language-focused discovery. Source language/search region does not establish organization country or worldwide coverage. Automatic triage may miss local-language phrasing."
+  },
+  {
+    "id": "google-incidents-br",
+    "name": "Google News — Brasil (português)",
+    "type": "google_news",
+    "locale": "pt",
+    "query": "(ciberataque OR ransomware OR \"vazamento de dados\") (empresa OR banco OR hospital)",
+    "scope": "GLOBAL",
+    "enabled": false,
+    "max_items": 35,
+    "note": "Optional language-focused discovery. Source language/search region does not establish organization country or worldwide coverage. Automatic triage may miss local-language phrasing."
+  },
+  {
+    "id": "google-incidents-apac",
+    "name": "Google News — Asia Pacific (English)",
+    "type": "google_news",
+    "locale": "en",
+    "query": "(cyberattack OR ransomware OR \"data breach\") (Japan OR Korea OR India OR Singapore OR Australia OR Taiwan)",
+    "scope": "GLOBAL",
+    "enabled": false,
+    "max_items": 35,
+    "note": "Optional language-focused discovery. Source language/search region does not establish organization country or worldwide coverage. Automatic triage may miss local-language phrasing."
+  },
+  {
+    "id": "google-incidents-jp",
+    "name": "Google News — 日本 (日本語)",
+    "type": "google_news",
+    "locale": "ja",
+    "query": "(サイバー攻撃 OR ランサムウェア OR 情報漏洩) (企業 OR 病院)",
+    "scope": "GLOBAL",
+    "enabled": false,
+    "max_items": 35,
+    "note": "Optional language-focused discovery. Source language/search region does not establish organization country or worldwide coverage. Automatic triage may miss local-language phrasing."
+  },
+  {
+    "id": "google-incidents-cn",
+    "name": "Google News — 中文资讯",
+    "type": "google_news",
+    "locale": "zh",
+    "query": "(网络攻击 OR 勒索软件 OR 数据泄露) (公司 OR 银行 OR 医院)",
+    "scope": "GLOBAL",
+    "enabled": false,
+    "max_items": 35,
+    "note": "Optional language-focused discovery. Source language/search region does not establish organization country or worldwide coverage. Automatic triage may miss local-language phrasing."
+  },
+  {
+    "id": "google-incidents-kr",
+    "name": "Google News — 한국 (한국어)",
+    "type": "google_news",
+    "locale": "ko",
+    "query": "(사이버공격 OR 랜섬웨어 OR 정보유출) (기업 OR 병원)",
+    "scope": "GLOBAL",
+    "enabled": false,
+    "max_items": 35,
+    "note": "Optional language-focused discovery. Source language/search region does not establish organization country or worldwide coverage. Automatic triage may miss local-language phrasing."
+  }
+]
