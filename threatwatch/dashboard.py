@@ -377,9 +377,10 @@ def method_page() -> bytes:
     <section class="card"><h2>Источники и ограничения</h2><p>Программа читает публичные RSS, API и разрешённые открытые страницы. Сначала собирает публикации, затем сопоставляет организации и предлагает кандидатов для проверки. Сохраняет первоисточник, даты и происхождение сведений. ИИ факультативен и по умолчанию выключен.</p><p>Охват неполон, новости запаздывают, классификация и объединение событий могут ошибаться. Исторические модели остаются исследовательскими. Предыдущий индекс 0–40 сохранён для совместимости исторических данных и старого API; новый обзор, карточки и экспорт риска используют модель v6 и диапазон 0–100.</p><p><a href="/api/risks">JSON API новой модели</a> · <a href="/export/risks">Экспорт CSV</a></p></section>""")
 
 
-def make_handler(db_path,controller=None):
+def make_handler(db_path,controller=None,*,instance_id=None):
     from .web_actions import ActionsMixin
     csrf=secrets.token_urlsafe(32)
+    instance_id=instance_id or secrets.token_urlsafe(18)
     class Handler(ActionsMixin,BaseHTTPRequestHandler):
         _csrf=csrf
         _controller=controller
@@ -394,10 +395,10 @@ def make_handler(db_path,controller=None):
             try:
                 if parsed.path == "/api/runtime":
                     from .runtime import runtime_info
-                    content=json.dumps(runtime_info(db_path),ensure_ascii=False).encode();mime="application/json; charset=utf-8";status=200
+                    content=json.dumps(runtime_info(db_path,instance_id=instance_id),ensure_ascii=False).encode();mime="application/json; charset=utf-8";status=200
                 elif parsed.path == "/about":
-                    content=about_page(db_path);mime="text/html; charset=utf-8";status=200
-                elif parsed.path == "/":
+                    content=about_page(db_path,instance_id=instance_id);mime="text/html; charset=utf-8";status=200
+                elif parsed.path == "/" or parsed.path == '/launch/'+instance_id:
                     collecting=bool(controller and controller.status().get('busy'))
                     content=home(con,parse_qs(parsed.query),collecting=collecting); mime="text/html; charset=utf-8"; status=200
                 elif parsed.path == "/analytics":
@@ -529,6 +530,9 @@ def make_handler(db_path,controller=None):
                 self.send_header("X-Content-Type-Options","nosniff")
                 self.send_header("Content-Security-Policy","default-src 'none'; style-src 'unsafe-inline'; frame-src https://cybermap.kaspersky.com; base-uri 'none'; form-action 'self'")
                 self.send_header("Cache-Control","no-store")
+                from . import __version__
+                self.send_header('X-ThreatWatch-Version',__version__)
+                self.send_header('X-ThreatWatch-Instance',instance_id)
                 if collecting:
                     self.send_header('Refresh','8')
                 self.end_headers()
@@ -538,14 +542,15 @@ def make_handler(db_path,controller=None):
     return Handler
 
 
-def about_page(db_path):
+def about_page(db_path,*,instance_id=None):
     from .runtime import runtime_info
-    info=runtime_info(db_path)
+    info=runtime_info(db_path,instance_id=instance_id)
     fields=[('Версия','version'),('Сборка','build'),('Папка приложения','source_dir'),
             ('Файл базы данных','database_path'),('Python','python_executable'),('Шкала приоритета','risk_scale')]
+    if instance_id:fields.append(('Идентификатор запуска','instance_id'))
     rows=''.join(f'<tr><th>{label}</th><td><code>{esc(info[key])}</code></td></tr>' for label,key in fields)
     return page('О приложении',f'''<div class="page-heading"><div><p class="eyebrow">Запущенная копия</p><h1>ThreatWatch Global {esc(info['version'])}</h1><p class="lead">Здесь видны версия и папка приложения, которое обслуживает эту вкладку.</p></div></div>
-    <section class="card"><table>{rows}</table></section><div class="note">Если после распаковки открывается прежний интерфейс, проверьте версию здесь и адрес, напечатанный в новом окне запуска. При занятом порту новая копия откроется на следующем свободном.</div><p><a href="/">Открыть новый обзор →</a></p>''')
+    <section class="card"><table>{rows}</table></section><div class="note">Если после распаковки открывается прежний интерфейс, проверьте версию здесь и адрес, напечатанный в новом окне запуска. В режиме desktop адрес выбирается заново при каждом запуске. Открывайте полный адрес VERIFIED dashboard с идентификатором запуска, а не старую закладку.</div><p><a href="/">Открыть новый обзор →</a></p>''')
 
 
 def serve(db_path,host="127.0.0.1",port=8765,controller=None,open_browser=False):
@@ -553,39 +558,56 @@ def serve(db_path,host="127.0.0.1",port=8765,controller=None,open_browser=False)
         raise ValueError("The dashboard is local-only; bind to 127.0.0.1")
     from .control import CollectionController
     controller=controller or CollectionController(db_path)
-    server=bind_dashboard(db_path,controller,host,port,desktop=open_browser)
+    instance_id=secrets.token_urlsafe(18)
+    server=bind_dashboard(db_path,controller,host,port,desktop=open_browser,instance_id=instance_id)
     port=server.server_address[1]
     from .runtime import runtime_info
     info=runtime_info(db_path)
     print(f"ThreatWatch Global {info['version']} | build {info['build']}")
     print(f"Application folder: {info['source_dir']}")
     print(f"Database: {info['database_path']}")
-    print(f"Dashboard: http://{host}:{port} (Ctrl+C to stop)")
+    base_url=f'http://{host}:{port}'
+    launch_url=base_url+'/launch/'+instance_id
+    worker=None
     if open_browser:
-        # One click means dashboard + immediate passive collection + 6h schedule.
-        # The AI remains OFF, regardless of installed API keys or Ollama.
-        controller.schedule()
-        controller.run_now()
+        from .startup import verify_server
         import webbrowser
-        threading.Timer(0.6,lambda: webbrowser.open(f'http://{host}:{port}/')).start()
+        worker=threading.Thread(target=server.serve_forever,kwargs={'poll_interval':.2},daemon=True,name='threatwatch-http')
+        worker.start()
     try:
-        server.serve_forever(poll_interval=.4)
+        if open_browser:
+            verify_server(base_url,instance_id=instance_id,version=info['version'])
+            print(f"VERIFIED dashboard: {launch_url}",flush=True)
+            print(f"Launch ID: {instance_id}",flush=True)
+            controller.schedule()
+            controller.run_now()
+            webbrowser.open(launch_url)
+            worker.join()
+        else:
+            print(f"Dashboard: {base_url} (Ctrl+C to stop)",flush=True)
+            server.serve_forever(poll_interval=.4)
     except KeyboardInterrupt:
         pass
     finally:
         controller.shutdown()
+        if worker:
+            server.shutdown()
+            worker.join(timeout=5)
         server.server_close()
 
 
-def bind_dashboard(db_path,controller,host,port,*,desktop=False):
+def bind_dashboard(db_path,controller,host,port,*,desktop=False,instance_id=None):
     """Never attach to or terminate another installation already using the port."""
     import errno
+    from .startup import ExclusiveLocalHTTPServer
+    if not isinstance(port,int) or not 0<=port<=65535:
+        raise ValueError('Port must be between 0 and 65535')
     attempts=10 if desktop and port else 1
     for candidate in range(port,min(65536,port+attempts)):
         try:
-            server=ThreadingHTTPServer((host,candidate),make_handler(db_path,controller))
+            server=ExclusiveLocalHTTPServer((host,candidate),make_handler(db_path,controller,instance_id=instance_id))
         except OSError as exc:
-            if not desktop or (exc.errno!=errno.EADDRINUSE and getattr(exc,'winerror',None)!=10048):
+            if not desktop or (exc.errno!=errno.EADDRINUSE and getattr(exc,'winerror',None) not in {10048,10013}):
                 raise
             continue
         if candidate!=port:

@@ -180,7 +180,7 @@ def build_parser():
     srv=sub.add_parser("serve",help="Start local dashboard and collection controls")
     srv.add_argument("--port",type=int,default=8765)
     desk=sub.add_parser('desktop',help='One-click local browser application')
-    desk.add_argument('--port',type=int,default=8765)
+    desk.add_argument('--port',type=int,default=0,help='Local port; default asks the OS for a free private port')
     incident=sub.add_parser('import-incidents',help='Import public incident headlines without a preselected organization')
     incident.add_argument('file',type=Path)
     imp=sub.add_parser("import-csv",help="Import manually verified public source links")
@@ -286,6 +286,10 @@ def main(argv=None):
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO,format="%(levelname)s %(message)s")
     load_env()
     path=database_path(args.db)
+    if args.command=='desktop':
+        from .integrity import verify_installation
+        checked=verify_installation()
+        print('Installation integrity: '+checked['status'])
     con=connect(path)
     orgs=initialize(con)
     try:

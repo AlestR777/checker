@@ -50,15 +50,20 @@ class DeliveryTests(unittest.TestCase):
         with self.assertRaises(OSError):bind_dashboard(self.db,None,'127.0.0.1',port)
 
     def test_desktop_opens_overview_on_actual_bound_port(self):
-        server=Mock();server.server_address=('127.0.0.1',8976)
         controller=Mock()
-        def timer(_delay,callback):
-            timer=Mock();timer.start.side_effect=callback;return timer
-        with patch('threatwatch.dashboard.bind_dashboard',return_value=server),patch('threatwatch.dashboard.threading.Timer',side_effect=timer),patch('webbrowser.open') as browser,contextlib.redirect_stdout(io.StringIO()):
-            serve(self.db,controller=controller,open_browser=True)
-        browser.assert_called_once_with('http://127.0.0.1:8976/')
+        from urllib.request import build_opener,ProxyHandler
+        def open_browser(url):
+            with build_opener(ProxyHandler({})).open(url,timeout=3) as response:
+                body=response.read().decode()
+                self.assertIn(f'ThreatWatch v{__version__}',body)
+                self.assertIn('--accent:#a67cff',body)
+            raise KeyboardInterrupt
+        with patch('webbrowser.open',side_effect=open_browser) as browser,contextlib.redirect_stdout(io.StringIO()) as output:
+            serve(self.db,port=0,controller=controller,open_browser=True)
+        self.assertIn('/launch/',browser.call_args.args[0])
+        self.assertIn('VERIFIED dashboard:',output.getvalue())
+        controller.run_now.assert_called_once()
         controller.shutdown.assert_called_once()
-        server.server_close.assert_called_once()
 
     def test_about_and_runtime_api_identify_database(self):
         controller=CollectionController(self.db)

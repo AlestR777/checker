@@ -2,7 +2,7 @@
 setlocal
 cd /d "%~dp0"
 chcp 65001 >nul
-title ThreatWatch Global 6.0.1
+title ThreatWatch Global 6.0.2
 where py >nul 2>nul
 if not errorlevel 1 (
     set "PY=py -3"
@@ -31,8 +31,9 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
-echo Starting ThreatWatch 6.0.1. The NEW OVERVIEW will open automatically.
-echo If an old copy uses port 8765, this copy will choose another free port.
+echo Starting ThreatWatch 6.0.2 on a NEW private port.
+echo The server identity and installation files will be checked before opening the browser.
+echo Use only the VERIFIED dashboard link printed below, not an old bookmark on port 8765.
 echo Closing this window stops the app and its 6-hour schedule.
 %PY% -m threatwatch desktop
 if errorlevel 1 (
