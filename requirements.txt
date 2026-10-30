@@ -1,0 +1,4 @@
+# Native trust store fixes common Windows certificate-chain errors without disabling HTTPS verification.
+truststore>=0.9.2,<1
+certifi>=2024.7.4
+# No other runtime dependency needed; math module uses Python standard library.

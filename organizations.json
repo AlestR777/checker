@@ -1,0 +1,496 @@
+[
+  {
+    "id": "les-republicains",
+    "name": "Les Républicains",
+    "sector": "politics",
+    "country": "FR",
+    "aliases": [
+      "Les Républicains",
+      "Les Republicains",
+      "parti Les Républicains",
+      "parti LR"
+    ],
+    "notes": "Historical case; analyze only evidence dated before an event for backtesting."
+  },
+  {
+    "id": "ville-de-paris",
+    "name": "Ville de Paris",
+    "sector": "public_administration",
+    "country": "FR",
+    "aliases": [
+      "Ville de Paris",
+      "Mairie de Paris",
+      "administration parisienne",
+      "Paris City Hall"
+    ],
+    "notes": "Paris municipality, not all Paris-based organizations."
+  },
+  {
+    "id": "interieur",
+    "name": "Ministère de l'Intérieur",
+    "sector": "public_administration",
+    "country": "FR",
+    "aliases": [
+      "Ministère de l'Intérieur",
+      "Ministere de l'Interieur",
+      "French Interior Ministry",
+      "ministère français de l'intérieur"
+    ],
+    "notes": "National Ministry of the Interior."
+  },
+  {
+    "id": "education",
+    "name": "Ministère de l'Éducation nationale",
+    "sector": "public_administration",
+    "country": "FR",
+    "aliases": [
+      "Ministère de l'Éducation nationale",
+      "Ministere de l'Education nationale",
+      "French Education Ministry"
+    ],
+    "notes": "National Ministry of Education."
+  },
+  {
+    "id": "carrefour",
+    "name": "Carrefour",
+    "sector": "retail",
+    "country": "FR",
+    "aliases": [
+      "Carrefour",
+      "Carrefour France",
+      "Groupe Carrefour",
+      "Carrefour Group"
+    ],
+    "notes": "Exact word boundary and cyber context required for short name."
+  },
+  {
+    "id": "edf",
+    "name": "EDF",
+    "sector": "energy",
+    "country": "FR",
+    "aliases": [
+      "EDF",
+      "Électricité de France",
+      "Electricite de France",
+      "EDF France"
+    ],
+    "notes": "Short alias requires cybersecurity context."
+  },
+  {
+    "id": "la-poste-mobile",
+    "name": "La Poste Mobile",
+    "sector": "telecom",
+    "country": "FR",
+    "aliases": [
+      "La Poste Mobile",
+      "LaPoste Mobile"
+    ],
+    "notes": "Mobile brand; distinct from La Poste parent."
+  },
+  {
+    "id": "business-france",
+    "name": "Business France",
+    "sector": "public_administration",
+    "country": "FR",
+    "aliases": [
+      "Business France"
+    ],
+    "notes": "French trade and investment agency."
+  },
+  {
+    "id": "sgdsn",
+    "name": "SGDSN",
+    "sector": "public_administration",
+    "country": "FR",
+    "aliases": [
+      "SGDSN",
+      "Secrétariat général de la défense et de la sécurité nationale"
+    ],
+    "notes": "Government office; source evidence, not vulnerability inference."
+  },
+  {
+    "id": "saint-malo",
+    "name": "Ville de Saint-Malo",
+    "sector": "public_administration",
+    "country": "FR",
+    "aliases": [
+      "Ville de Saint-Malo",
+      "Mairie de Saint-Malo",
+      "Saint-Malo municipality"
+    ],
+    "notes": "Municipality; city name alone deliberately omitted to avoid location false positives."
+  },
+  {
+    "id": "brest",
+    "name": "Ville de Brest",
+    "sector": "public_administration",
+    "country": "FR",
+    "aliases": [
+      "Ville de Brest",
+      "Mairie de Brest",
+      "Brest mairie"
+    ],
+    "notes": "Municipality."
+  },
+  {
+    "id": "renault-trucks",
+    "name": "Renault Trucks",
+    "sector": "manufacturing",
+    "country": "FR",
+    "aliases": [
+      "Renault Trucks",
+      "Renault Trucks France"
+    ],
+    "notes": "Industrial company, distinct from Renault passenger cars."
+  },
+  {
+    "id": "eurenco",
+    "name": "Eurenco",
+    "sector": "manufacturing",
+    "country": "FR",
+    "aliases": [
+      "Eurenco",
+      "EURENCO France"
+    ],
+    "notes": "Industrial manufacturer; technical weaknesses not inferred."
+  },
+  {
+    "id": "corsica-linea",
+    "name": "Corsica Linea",
+    "sector": "transport",
+    "country": "FR",
+    "aliases": [
+      "Corsica Linea",
+      "CorsicaLinea"
+    ],
+    "notes": "Transport operator."
+  },
+  {
+    "id": "genavir",
+    "name": "Genavir",
+    "sector": "maritime",
+    "country": "FR",
+    "aliases": [
+      "Genavir",
+      "GENAVIR France"
+    ],
+    "notes": "Maritime organization."
+  },
+  {
+    "id": "port-la-rochelle",
+    "name": "Port Atlantique La Rochelle",
+    "sector": "maritime",
+    "country": "FR",
+    "aliases": [
+      "Port Atlantique La Rochelle",
+      "Grand Port Maritime de La Rochelle",
+      "port de La Rochelle"
+    ],
+    "notes": "Port authority; do not infer technical exposure."
+  },
+  {
+    "id": "microsoft",
+    "name": "Microsoft",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "Microsoft",
+      "Microsoft Corporation",
+      "Майкрософт"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "alphabet",
+    "name": "Alphabet Inc.",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "Alphabet Inc",
+      "Alphabet Inc.",
+      "Alphabet company"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "google",
+    "name": "Google LLC",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "Google LLC",
+      "Google Cloud",
+      "компания Google"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "amazon",
+    "name": "Amazon.com, Inc.",
+    "sector": "retail",
+    "country": "US",
+    "aliases": [
+      "Amazon.com",
+      "Amazon.com Inc",
+      "Amazon company",
+      "компания Amazon"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "amazon-web-services",
+    "name": "Amazon Web Services",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "Amazon Web Services",
+      "AWS"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "apple",
+    "name": "Apple Inc.",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "Apple Inc",
+      "Apple Inc.",
+      "Apple"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "meta-platforms",
+    "name": "Meta Platforms",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "Meta Platforms",
+      "Meta Platforms Inc",
+      "компания Meta"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "ibm",
+    "name": "IBM",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "IBM",
+      "International Business Machines"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "cloudflare",
+    "name": "Cloudflare",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "Cloudflare",
+      "Cloudflare Inc"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "cisco",
+    "name": "Cisco Systems",
+    "sector": "technology",
+    "country": "US",
+    "aliases": [
+      "Cisco Systems",
+      "Cisco"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "siemens",
+    "name": "Siemens",
+    "sector": "manufacturing",
+    "country": "DE",
+    "aliases": [
+      "Siemens",
+      "Siemens AG",
+      "Сименс"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "sap",
+    "name": "SAP SE",
+    "sector": "technology",
+    "country": "DE",
+    "aliases": [
+      "SAP SE",
+      "SAP"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "hsbc",
+    "name": "HSBC Holdings",
+    "sector": "finance",
+    "country": "GB",
+    "aliases": [
+      "HSBC",
+      "HSBC Holdings"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "tata-consultancy-services",
+    "name": "Tata Consultancy Services",
+    "sector": "technology",
+    "country": "IN",
+    "aliases": [
+      "Tata Consultancy Services",
+      "TCS"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "infosys",
+    "name": "Infosys",
+    "sector": "technology",
+    "country": "IN",
+    "aliases": [
+      "Infosys",
+      "Infosys Limited"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "toyota",
+    "name": "Toyota Motor Corporation",
+    "sector": "manufacturing",
+    "country": "JP",
+    "aliases": [
+      "Toyota Motor",
+      "Toyota",
+      "トヨタ自動車",
+      "Тойота"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "sony",
+    "name": "Sony Group Corporation",
+    "sector": "technology",
+    "country": "JP",
+    "aliases": [
+      "Sony Group",
+      "Sony Corporation",
+      "ソニーグループ"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "samsung-electronics",
+    "name": "Samsung Electronics",
+    "sector": "technology",
+    "country": "KR",
+    "aliases": [
+      "Samsung Electronics",
+      "삼성전자",
+      "Самсунг Электроникс"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "tsmc",
+    "name": "Taiwan Semiconductor Manufacturing Company",
+    "sector": "manufacturing",
+    "country": "TW",
+    "aliases": [
+      "TSMC",
+      "Taiwan Semiconductor Manufacturing",
+      "台灣積體電路製造",
+      "台积电"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "alibaba",
+    "name": "Alibaba Group",
+    "sector": "technology",
+    "country": "CN",
+    "aliases": [
+      "Alibaba Group",
+      "Alibaba",
+      "阿里巴巴集团",
+      "阿里巴巴"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "tencent",
+    "name": "Tencent Holdings",
+    "sector": "technology",
+    "country": "CN",
+    "aliases": [
+      "Tencent",
+      "Tencent Holdings",
+      "腾讯"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "petrobras",
+    "name": "Petrobras",
+    "sector": "energy",
+    "country": "BR",
+    "aliases": [
+      "Petrobras",
+      "Petróleo Brasileiro"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "standard-bank",
+    "name": "Standard Bank Group",
+    "sector": "finance",
+    "country": "ZA",
+    "aliases": [
+      "Standard Bank Group",
+      "Standard Bank South Africa"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "telstra",
+    "name": "Telstra",
+    "sector": "telecom",
+    "country": "AU",
+    "aliases": [
+      "Telstra",
+      "Telstra Corporation"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "sberbank",
+    "name": "Сбербанк",
+    "sector": "finance",
+    "country": "RU",
+    "aliases": [
+      "Сбербанк",
+      "Sberbank",
+      "ПАО Сбербанк"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  },
+  {
+    "id": "mercado-libre",
+    "name": "Mercado Libre",
+    "sector": "retail",
+    "country": "AR",
+    "aliases": [
+      "Mercado Libre",
+      "MercadoLibre",
+      "Mercado Livre"
+    ],
+    "notes": "Global watchlist seed. Country identifies headquarters/legal domicile, not the location of every service or incident. Inclusion is not an incident or threat finding."
+  }
+]
